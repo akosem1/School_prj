@@ -1,0 +1,23 @@
+<?php 
+  include '../lib/extends/Fetcher.php';
+  
+  $fetcher = new Fetcher();
+  $courses = $fetcher->fetch('courses');
+  function createSelect($result_set, $select_name) {
+    $select = '';
+    $select .= '<select id="selectCourse" name="' . $select_name . '_id">
+<option disabled selected>Choose Course</option>
+    ';
+    for ($i=0, $count = count($result_set); $i < $count; $i++) { 
+      $select .= '<option value=' . $result_set[$i]['id'] . '>';
+      if (isset($result_set[$i]['name'])) {
+        $select .= $result_set[$i]['name'];
+      } else {
+        $select .= $result_set[$i]['id'];
+      }
+      $select .= '</option>';
+    }
+    $select .= '</select>';
+    return $select;
+  }
+ ?>

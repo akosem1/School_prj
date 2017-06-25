@@ -1,0 +1,38 @@
+<div id="adminsContainer" class="col-xs-12 col-md-12 " > 
+	<div class="loadFromDB"> 
+		<?php 
+			if ($_SESSION['permission_id'] == '1' || $_SESSION['permission_id'] == '2') {
+      			echo '
+				<div id="headListadmins"> 
+				<h3>Admins</h3> 
+				</div>
+				<button class="btnDesigned" id="addAdmins"><span>╋</span></button>
+				';
+
+			$result = DB::getconnection()->query("SELECT name, id, img FROM admins");
+			$row_cnt = $result->num_rows;
+			printf("has %d admins.\n", $row_cnt);
+			echo "<br>"; echo "<br>";
+
+echo "<div id='adminsList'>";
+
+        while ($row = $result->fetch_assoc()) {
+         echo " <a href='?subject=administration&admin=show&id="    . $row['id'] .   "'> <div  class ='user_view " . $row['id'] . "'>  " ; 
+
+      echo "
+              <img class='userPhoto' alt='user photo' src='../img/uploads/admins/"
+              . $row['img']
+              . "' >
+              ";
+
+					foreach ($row as $key => $value) {
+					       echo "<span class='linkShow'> $key: $value  ";
+					}
+					echo "</div> </a>";
+					echo "<br>";
+				}
+				echo "</div>";
+			} 
+		?>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+
+
+<div id="create_student" class="addNew" style="display:none">
+  <h2>Create student</h2>
+
+  <?php include '../create/create_student.php'; ?>
+</div>
+
+<div id="create_admin" class="addNew" style="display:none">
+  <h2>Create admin</h2>
+  <?php include '../create/create_admin.php'; ?>
+</div>
+
+<div id="create_course" class="addNew" style="display:none">
+  <h2>Create course</h2>
+  <?php include '../create/create_course.php'; ?>
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+
+if (document.querySelector('#addCouress')) {
+    document.querySelector('#addCouress').addEventListener("click", function(){
+/*document.querySelector('#create_student').style="display:none"*/
+addNew();
+	document.querySelector('#create_course').style="display:block"
+    });
+}
+
+
+
+if (document.querySelector('#addStudents')) {
+    document.querySelector('#addStudents').addEventListener("click", function(){
+/*document.querySelector('#create_course').style="display:none"*/
+addNew();
+	document.querySelector('#create_student').style="display:block"
+    });
+}
+
+if (document.querySelector('#addAdmins')) {
+    document.querySelector('#addAdmins').addEventListener("click", function(){
+addNew();
+	document.querySelector('#create_admin').style="display:block"
+    });
+}
+
+ 
+ function addNew() {
+    document.querySelector('.addNew').style.display = "none"
+}
+</script>

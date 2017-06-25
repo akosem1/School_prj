@@ -1,0 +1,4 @@
+
+you must put this folder and all files in the folder: "C:\xampp\htdocs",
+and go to "to install DB and open prj.bat" 
+for to install DB and open prj.

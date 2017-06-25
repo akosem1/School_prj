@@ -1,0 +1,15 @@
+<?php
+class DB {
+    private static $connection;
+    public function getconnection() {
+        if (!self::$connection) {
+            self::$connection = new mysqli('localhost', 'root', '', 'schoolb');
+         /*
+            if ($connection->errno) {echo $connection->error;die();}
+            */
+        }
+        return self::$connection;
+    }
+    private function __construct() {}
+}
+

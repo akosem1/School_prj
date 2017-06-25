@@ -1,0 +1,43 @@
+<div id="studentsContainer" class="col-xs-6 col-md-6 " >
+  <div class="loadFromDB"> 
+    <?php 
+      if ($_SESSION['permission_id'] == '1' || $_SESSION['permission_id'] == '2' || $_SESSION['permission_id'] == '3') {
+          echo '
+          <div id="headListcouress"> 
+          <h3>Couress</h3>
+           </div>
+          ';
+          
+          if ($_SESSION['permission_id'] == '1' || $_SESSION['permission_id'] == '2') {
+echo '
+  <button id="addCouress" class="btnDesigned"><span>╋</span></button>
+';
+          }
+
+     $result = DB::getconnection()->query("SELECT id, name, img FROM courses ORDER BY length DESC");  
+        $row_cnt = $result->num_rows;
+        printf("has %d Courses.\n", $row_cnt);
+        echo "<br>"; echo "<br>";
+
+        while ($row = $result->fetch_assoc()) {
+          echo " <a href='?subject=school&course=show&id="    . $row['id']  . "'> <div  class ='user_view " . $row['id'] . "'>  " ; 
+          echo "
+              <img class='userPhoto' alt='coures photo' src='../img/uploads/courses/"
+              . $row['img']
+              . "' >
+              ";
+
+        foreach ($row as $key => $value) {
+               echo "<span class='linkShow'> $key: $value  ";
+        }
+        echo "</div> </a>";
+        echo "<br>";
+        }
+    } 
+
+  ?>
+  </div>
+</div>
+
+
+   
